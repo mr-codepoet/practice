@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器</title>
+</head>
+<style>
+    .item {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+    }
+
+    .item.cur {
+        background-color: #000;
+    }
+</style>
+
+<body>
+
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+
+    <script src="js/jquery3.3.1.js"></script>
+
+    <script>
+        $('.item').eq(0).addClass('cur')
+        var num = 0;
+        var time = setInterval(function () {
+            num++
+            if (num >= 5) {
+                num = 0
+            }
+            $('.item').eq(num).addClass('cur').siblings().removeClass('cur')
+            console.log(num)
+        }, 1000)
+
+        $('.item').click(function () {
+            $(this).addClass('cur').siblings().removeClass('cur')
+            var i = $(this).index()
+            console.log(i)
+
+            clearInterval(time)
+            num = i;
+            time = setInterval(function () {
+                num++
+                if (num >= 5) {
+                    num = 0
+                }
+                $('.item').eq(num).addClass('cur').siblings().removeClass('cur')
+                console.log(num)
+            }, 1000)
+        })
+    </script>
+</body>
+
+</html>

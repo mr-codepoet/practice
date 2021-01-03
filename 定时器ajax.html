@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax中的定时器</title>
+</head>
+<div id="btn">拉取</div>
+<div id="ajax_wrap"></div>
+
+<body>
+    <script src="js/jquery3.3.1.js"></script>
+    <script>
+        $('#btn').click(function () {
+            console.log(1)
+            htmlobj = $.ajax({
+                url: "ajax/time.txt",
+                async: false
+            });
+            $("#ajax_wrap").html(htmlobj.responseText);
+        });
+    </script>
+</body>
+
+</html>
